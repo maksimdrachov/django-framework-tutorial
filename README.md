@@ -54,7 +54,7 @@ To show installed libraries: `pip freeze`
 
 ```python
 # Create your models here.
-class Product():
+class Product(models.Model):
     title       = models.TextField()
     description = models.TextField()
     price       = models.TextField()
@@ -83,4 +83,12 @@ INSTALLED_APPS = [
 `python manage.py makemigrations`
 
 `python manage.py migrate`
+
+`products/admin.py`:
+
+```py
+from .models import Product
+
+admin.site.register(Product)
+```
 
