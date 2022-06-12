@@ -104,3 +104,16 @@ example:
 
 `Product.objects.create(title="New product 2", description="new one", price="19292", summary="sweet")`
 
+**New Models Fields**
+
+[Field types docs](https://docs.djangoproject.com/en/2.0/ref/models/fields/#field-types)
+
+```py
+# Create your models here.
+class Product(models.Model):
+    title       = models.CharField(max_length=120)  # max_length = required
+    description = models.TextField(blank=True, null=True)
+    price       = models.DecimalField(decimal_places=2, max_digits=1000)
+    summary     = models.TextField()
+```
+
