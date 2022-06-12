@@ -92,3 +92,15 @@ from .models import Product
 admin.site.register(Product)
 ```
 
+**Create Product Objects in the Python Shell**
+
+`python manage.py shell`: imports your django project into a python shell
+
+example: 
+
+`from products.models import Product`
+
+`Product.objects.all()`
+
+`Product.objects.create(title="New product 2", description="new one", price="19292", summary="sweet")`
+
