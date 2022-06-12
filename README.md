@@ -137,3 +137,31 @@ class Product(models.Model):
 
 blank how the field is rendered, null means database entry can be empty
 
+**Default Homepage to Custom Homepage**
+
+> we do this by creating a class or function based view
+
+`python manage.py startapp pages`
+
+`views.py`: handles your various webpages
+
+```py
+from django.http import HttpResponse
+
+# Create your views here.
+
+def home_view(*args, **kwargs):
+    return HttpResponse("<h1> Hello World </h1>")
+```
+
+`urls.py`:
+
+```py
+from pages import views
+
+urlpatterns = [
+    path('', views.home_view, name='home'),
+    path('admin/', admin.site.urls),
+]
+```
+
