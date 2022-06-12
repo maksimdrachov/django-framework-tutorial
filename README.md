@@ -200,6 +200,41 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, "templates")],
 ```
 
+**Django Templating Engine Basics**
+
+`base.html` template:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Coding for Entrepreneurs
+        </title>
+    </head>
+    <body>
+        <h1>This is a navbar</h1>
+        {% block content %}
+            replace me
+        {% endblock %}
+    </body>
+</html>
+```
+
+`home.html` template:
+
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hello world</h1>
+{{ request.user.is_authenticated }}
+<p>This is a template</p>
+{% endblock %}
+```
+
+
+
 
 
 
