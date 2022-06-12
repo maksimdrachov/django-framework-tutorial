@@ -182,3 +182,24 @@ Output:
 ```
 
 `print(request.user)` will print the logged in user.
+
+**Django Templates**
+
+Create a new folder called `templates`; update `views.py` to return the requested page using:
+
+```py
+return render(request, "home.html", {})
+```
+
+In `settings.py`; indiciate the path to your template folder:
+
+```
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
+```
+
+
+
+
