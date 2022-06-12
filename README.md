@@ -233,8 +233,39 @@ TEMPLATES = [
 {% endblock %}
 ```
 
+**Include Template Tag**
 
+Create a new `navbar.html` template:
 
+```html
+<nav>
+    <ul>
+        <li>Home</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+```
+
+Update `base.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Coding for Entrepreneurs
+        </title>
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        {% block content %}
+            replace me
+        {% endblock %}
+    </body>
+</html>
+```
+
+**Rendering Context in a Template**
 
 
 
