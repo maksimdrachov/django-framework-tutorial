@@ -267,5 +267,24 @@ Update `base.html`:
 
 **Rendering Context in a Template**
 
+We can pass in context variables through the dictionary:
+
+```
+def contact_view(request, *args, **kwargs):
+    my_context = {
+        "my_text": "This is about me",
+        "my_number": 123,
+        "my_list": [123, 345]
+    }
+    return render(request, "contact.html", my_context)
+```
+
+And display them like this:
+
+```
+<p>
+    {{ my_text }}, {{ my_number }}, {{ my_list }}
+</p>
+```
 
 
