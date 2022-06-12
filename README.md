@@ -117,3 +117,23 @@ class Product(models.Model):
     summary     = models.TextField()
 ```
 
+**Change a Model**
+
+> Make a new change to the model without deleting the database
+
+```py
+# Create your models here.
+class Product(models.Model):
+    title       = models.CharField(max_length=120)  # max_length = required
+    description = models.TextField(blank=True, null=True)
+    price       = models.DecimalField(decimal_places=2, max_digits=1000)
+    summary     = models.TextField()
+    featured    = models.BooleanField()
+```
+
+`null=True`
+`default=True`
+`blank=True` -> required or not field
+
+blank how the field is rendered, null means database entry can be empty
+
