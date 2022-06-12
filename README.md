@@ -321,3 +321,165 @@ Iterate trough list inside html code:
 
 [Built-in filter reference](https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#built-in-filter-reference)
 
+**Render Data from the Database with a Model**
+
+1:49:19
+
+Open Python shell: python manage.py shell
+
+>> from products.models import Product
+>> Product.objects.get(id=1)
+>> obj = Product.objects.get(id=1)
+>> dir(obj) => see all different fields
+
+In products/views.py:
+
+from .models import Product
+
+def product_detail_view(request):
+	obj = Product.objects.get(id=1)
+	context = {
+		'object' : obj	
+	}
+	return render(request, "product/detail.html", {})
+	
+new folder in templates called product
+
+inside this folder, create a file named detail.html
+
+```
+{% exends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+<p> {{ object.description }} </p>
+<p> {% if object.description %} {{ object.description }} {% else %} No description {% endif %}  </p>
+{% endblock %}
+```
+
+Add entry to url.py
+
+```
+from products.views import product_detail_view
+
+path('product/', product_detail_view)
+```
+
+**How Django Templates load with Apps**
+
+**Django Model Forms**
+
+Inside product make a new file called forms.py
+
+```
+from django import forms
+
+from .models import Product
+
+class ProductForm(forms.ModelForm):
+	class Meta:
+		model = Product
+		fields = [
+			'title',
+			'description',
+			'price'
+		]
+```
+
+go into product/views.py:
+
+```
+from .forms import ProductForm
+
+def product_create_view(request):
+	form = ProductForm(request.POST or None)
+	if form.is_valid():
+		form.save()
+		form = ProductForm()	
+		
+	context = {
+		'form' : form
+	}
+	
+	return render(request, "products/product_create.html", context)
+
+```
+
+Create a new template product_create.html
+
+```
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST'> {% csrf_token %}
+{{ form.as_p }}
+<input type='submit' value='Save' />
+</form>
+{% endblock %}
+```
+
+Add view to urls.py
+
+```
+from products.view import product_create_view
+
+path('create', product_create_view),
+```
+
+**Raw html form**
+
+2:13:38
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
