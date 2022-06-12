@@ -287,4 +287,15 @@ And display them like this:
 </p>
 ```
 
+**For Loop in a Template**
+
+Iterate trough list inside html code:
+
+```html
+<ul>
+    {% for my_sub_item in my_list %}
+    <li>{{my_sub_item}}</li>
+    {% endfor %}
+</ul>
+```
 
