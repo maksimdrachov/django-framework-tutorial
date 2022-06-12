@@ -6,6 +6,8 @@ This repo contains my personal notes while following a YT tutorial on Django.
 
 [Github repo](https://github.com/codingforentrepreneurs/Try-Django)
 
+[API Reference](https://docs.djangoproject.com/en/2.0/ref/)
+
 ## Setup
 
 **Virtual environment**
@@ -298,4 +300,24 @@ Iterate trough list inside html code:
     {% endfor %}
 </ul>
 ```
+
+**Using Conditions in a Template**
+
+```html
+{% for my_sub_item in my_list %}
+    {% if my_sub_item == 312 %}
+        <li>{{ forloop.counter }} - {{ my_sub_item|add:22 }}</li>
+    {% elif my_sub_item == 123 %}
+        <li>Custom message</li>
+    {% else %}
+    <li>{{ forloop.counter }} - {{my_sub_item}}</li>
+    {% endif %}
+{% endfor %}
+```
+
+**Template Tags and Filters**
+
+[Template Tags reference](https://docs.djangoproject.com/en/2.0/ref/templates/builtins/)
+
+[Built-in filter reference](https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#built-in-filter-reference)
 
