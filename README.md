@@ -161,7 +161,24 @@ from pages import views
 
 urlpatterns = [
     path('', views.home_view, name='home'),
+    path('contact/', views.contact_view),
     path('admin/', admin.site.urls),
 ]
 ```
 
+**URL Routing and Requests**
+
+```py
+def home_view(request, *args, **kwargs):
+    print(args, kwargs)
+    print(request)
+```
+
+Output:
+
+```
+() {}
+<WSGIRequest: GET '/'>
+```
+
+`print(request.user)` will print the logged in user.
